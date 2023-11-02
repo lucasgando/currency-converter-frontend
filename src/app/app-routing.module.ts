@@ -6,22 +6,24 @@ import { publicGuard } from './core/guards/public.guard';
 
 const routes: Routes = [
   {
-    canActivateChild: [adminGuard],
-    children: [
-      
-    ],
-  },
-  {
-    canActivateChild: [userGuard],
-    children: [
-      
-    ],
-  },
-  {
+    path: "",
     canActivateChild: [publicGuard],
-    children: [
-      
-    ],
+    loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
+  },
+  {
+    path: "dashboard",
+    canActivateChild: [userGuard, adminGuard],
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: "admin",
+    canActivateChild: [adminGuard],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: "",
+    redirectTo: "home",
+    pathMatch: 'full'
   }
 ];
 
