@@ -3,13 +3,13 @@
   <p>Login to access</p>
   <form #loginForm="ngForm" (ngSubmit)="login()">
     <div>
-      <label for=""></label>
-      <input type="text" name="" id="">
+      <label for="username"></label>
+      <input type="text" name="username" id="username" type="username" placeholder="Username" required>
     </div>
     <div>
-      <label for=""></label>
-      <input type="text" name="" id="">
+      <label for="password"></label>
+      <input type="text" name="password" id="password" type="password" placeholder="Password" required>
     </div>
-    <button type="submit"></button>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
 </div>
