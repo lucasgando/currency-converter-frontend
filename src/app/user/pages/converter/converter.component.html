@@ -3,7 +3,7 @@
   #converterForm="ngForm"
   (ngSubmit)="convert()"
 >
-  <img src="./../../../../assets/icons/company-icon.png" id="converter-icon" />
+  <img src="./../../../../assets/icons/company-icon.png" id="converter-icon icon" />
   <h1>Converter</h1>
   <div>
     <label for="amount"></label>
@@ -48,6 +48,7 @@
   <img
     *ngIf="loading()"
     class="loading-spinner"
+    id="loading-spinner"
     src="./../../../../assets/icons/svg/loading_spinner.svg"
     alt="Loading..."
   />
