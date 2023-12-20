@@ -47,6 +47,7 @@
   </button>
   <img
     *ngIf="loading()"
+    class="loading-spinner"
     src="./../../../../assets/icons/svg/loading_spinner.svg"
     alt="Loading..."
   />
@@ -54,30 +55,43 @@
 
 <div *ngIf="selecting() != 'none'" class="flex-column">
   <h2 class="sticky" id="sticky-selector-title">
-    Select {{ selecting() }} currency
+    Select currency to convert {{ selecting() }}
   </h2>
-  <div class="flex-column" id="favorites">
-    <currency-card
-    *ngFor="let currency of favoriteCurrencies()"
-    [currency]="currency"
-    (click)="selectCurrency(selecting(), currency)"
-    ></currency-card>
+  <div *ngIf="favoriteCurrencies().length > 0" class="flex-column" id="favorites">
+    <div *ngFor="let currency of favoriteCurrencies()" class="flex-column">
+      <currency-card
+        *ngIf="
+          (selecting() == 'from' && currency.id != toCurrency().id) ||
+          (selecting() == 'to' && currency.id != fromCurrency().id)
+        "
+        [currency]="currency"
+        (click)="selectCurrency(selecting(), currency)"
+      ></currency-card>
+    </div>
   </div>
   <div *ngFor="let currency of currencies()" class="flex-column">
     <currency-card
-    *ngIf="favoriteIndexes.indexOf(currency.id) == -1"
+      *ngIf="
+        (favoriteIndexes.indexOf(currency.id) == -1 &&
+          selecting() == 'from' &&
+          currency.id != toCurrency().id) ||
+        (selecting() == 'to' && currency.id != fromCurrency().id)
+      "
       [currency]="currency"
       (click)="selectCurrency(selecting(), currency)"
     ></currency-card>
   </div>
-  <button
-    (click)="scrollToTop()"
-    *ngIf="windowScrolled()"
-    class="sticky"
-    id="scroll-up-button"
-  >
-    Top
-  </button>
+  <div class="sticky" id="sticky-frame">
+    <button (click)="selecting.set('none')" class="sticky" id="cancel-button">Cancel</button>
+    <button
+      (click)="scrollToTop()"
+      *ngIf="windowScrolled()"
+      class="sticky"
+      id="scroll-up-button"
+    >
+      Top
+    </button>
+  </div>
 </div>
 
 <div *ngIf="result() > 0" class="flex-column backdrop">

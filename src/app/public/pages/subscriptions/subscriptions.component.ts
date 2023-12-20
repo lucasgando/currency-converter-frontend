@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./subscriptions.component.scss']
 })
 export class SubscriptionsComponent {
-  service: SubscriptionService = inject(SubscriptionService);
   router: Router = inject(Router);
-
+  
+  service: SubscriptionService = inject(SubscriptionService);
   subscriptions: WritableSignal<Subscription[]> = signal<Subscription[]>([]);
   selectedSubscriptionId: number = 0;
 

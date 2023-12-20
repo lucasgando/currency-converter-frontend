@@ -93,7 +93,7 @@ export class ConverterComponent implements OnInit {
   selectCurrency(select: string, currency: Currency): void {
     if (select == 'from') {
       this.fromCurrency.set(currency);
-      if (this.fromCurrency().id == 0) this.selectList('to');
+      if (this.toCurrency().id == 0) this.selectList('to');
       else this.selectList('none');
       return;
     }

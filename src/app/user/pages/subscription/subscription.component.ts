@@ -1,6 +1,7 @@
 import { Component, OnInit, WritableSignal, inject, signal } from '@angular/core';
 import { Subscription } from '../../../core/interfaces/subscription';
 import { SubscriptionService } from './../../../core/services/subscription.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subscription',
@@ -9,6 +10,7 @@ import { SubscriptionService } from './../../../core/services/subscription.servi
 })
 export class SubscriptionComponent implements OnInit {
   service: SubscriptionService = inject(SubscriptionService);
+  router: Router = inject(Router);
 
   subscriptions: WritableSignal<Subscription[]> = signal<Subscription[]>([]);
   selectedSubscriptionId: number = 0;
@@ -22,9 +24,8 @@ export class SubscriptionComponent implements OnInit {
   }
 
   changeSubscription(): void {
-    console.log(this.selectedSubscriptionId)
     this.service.subscribe(this.selectedSubscriptionId).then(res => {
-      console.log(res);
+      this.router.navigate(['/dashboard/converter']);
     });
   }
 }

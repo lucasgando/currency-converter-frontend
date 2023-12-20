@@ -1,8 +1,4 @@
-<form
-  #loginForm="ngForm"
-  (ngSubmit)="login()"
-  class="flex-column form"
->
+<form #loginForm="ngForm" (ngSubmit)="login()" class="flex-column form">
   <h1>Sign In</h1>
   <div class="flex-column" id="input-box">
     <label for="username">E-mail</label>
@@ -13,7 +9,6 @@
       placeholder=""
       autocomplete="email"
       required
-
       [(ngModel)]="loginData.email"
     />
   </div>
@@ -26,11 +21,22 @@
       placeholder=""
       autocomplete="current-password"
       required
-
       [(ngModel)]="loginData.password"
     />
   </div>
-  <button type="submit" [disabled]="loginForm.invalid || loading()">Login</button>
+  <button
+    type="submit"
+    *ngIf="!loading()"
+    [disabled]="loginForm.invalid || loading()"
+  >
+    Login
+  </button>
+  <img
+    *ngIf="loading()"
+    class="loading-spinner"
+    src="./../../../../assets/icons/svg/loading_spinner.svg"
+    alt="Loading..."
+  />
   <p id="prompt">
     Don't have an account? -
     <a [routerLink]="['/register']" routerlinkactive="router-link-active"

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   auth: AuthService = inject(AuthService);
   router: Router = inject(Router);
+  passwordRegex: RegExp = RegExp('^\\S*(?=\\S{6,})(?=\\S*\\d)(?=\\S*[A-Z])(?=\\S*[a-z])(?=\\S*[!@#$%^&*? ])\\S*$');
 
   registerData: RegisterData = {
     username: '',
