@@ -12,5 +12,6 @@ export interface LoginData {
 export interface RegisterData {
   username: string,
   email: string,
-  password: string
+  password: string,
+  subscriptionId: number
 }

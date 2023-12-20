@@ -14,10 +14,6 @@ const routes: Routes = [
       {
         path: 'register',
         loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
-      },
-      {
-        path: 'subscriptions',
-        loadChildren: () => import('./pages/subscriptions/subscriptions.module').then(m => m.SubscriptionsModule)
       }
     ]
   }

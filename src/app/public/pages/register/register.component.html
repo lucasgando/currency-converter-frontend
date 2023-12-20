@@ -1,4 +1,9 @@
-<form #registerForm="ngForm" (ngSubmit)="register()" class="flex-column form">
+<form
+  *ngIf="!choosingSubscription()"
+  #registerForm="ngForm"
+  (ngSubmit)="choosingSubscription.set(true)"
+  class="flex-column form"
+>
   <h1>Register</h1>
   <div class="flex-column" id="input-box">
     <label for="username">Username</label>
@@ -24,6 +29,7 @@
       #password="ngModel"
     />
   </div>
+  <p *ngIf="registerError()" class="error-message">Invalid or taken email address.</p>
   <div class="flex-column" id="input-box">
     <label for="password">Password</label>
     <input
@@ -47,11 +53,21 @@
       [(ngModel)]="repeatPassword"
     />
   </div>
-  <p class="error-message" *ngIf="!passwordRegex.test(registerData.password)">Password must contain at least 6 characters, an uppercase and a lowercase character, and at least one special character.</p>
+  <p class="error-message" *ngIf="!passwordRegex.test(registerData.password)">
+    Password must contain at least 6 characters, an uppercase and a lowercase
+    character, and at least one special character.
+  </p>
+  <p class="error-message" *ngIf="registerData.password != repeatPassword">
+    Passwords must be the same.
+  </p>
   <button
     type="submit"
     *ngIf="!loading()"
-    [disabled]="registerForm.invalid || registerData.password != repeatPassword || !passwordRegex.test(registerData.password)"
+    [disabled]="
+      registerForm.invalid ||
+      registerData.password != repeatPassword ||
+      !passwordRegex.test(registerData.password)
+    "
   >
     Register
   </button>
@@ -61,10 +77,32 @@
     src="./../../../../assets/icons/svg/loading_spinner.svg"
     alt="Loading..."
   />
-  <p class="error-message" *ngIf="registerData.password != repeatPassword">
-    Passwords must be the same.
-  </p>
   <p id="prompt">
     Already have an account? - <a [routerLink]="['/login']">Login</a>
   </p>
+</form>
+
+<form
+  *ngIf="choosingSubscription()"
+  #subscriptionForm="ngForm"
+  class="flex-column"
+  id="subscription-form"
+  (submit)="register()"
+>
+  <div class="flex-column">
+    <span *ngFor="let subscription of subscriptions()">
+      <input
+        type="radio"
+        id="{{ 'sub' + subscription.id }}"
+        name="subscriptionForm"
+        value="{{ subscription.id }}"
+        [(ngModel)]="registerData.subscriptionId"
+      />
+      <label for="{{ 'sub' + subscription.id }}">
+        <subscription-card [subscription]="subscription"></subscription-card>
+      </label>
+    </span>
+  </div>
+
+  <button type="submit" class="sticky">CONFIRM</button>
 </form>
