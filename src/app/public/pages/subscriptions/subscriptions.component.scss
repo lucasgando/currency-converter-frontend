@@ -1,0 +1,37 @@
+@use "./../../../../assets/styles/variables.scss";
+
+form {
+  height: calc(100vh - variables.$user-footer-height - variables.$user-header-height - 1vh);
+
+  input {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  div {
+    span {
+      margin: 5px;
+      display: grid;
+      label {
+        display: grid;
+        width: 100%;
+      }
+      input[type="radio"]:checked + label {
+        margin: auto;
+        background-color: variables.$accent-color;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  button {
+    margin: 0px auto;
+    margin-top: auto;
+    bottom: variables.$user-footer-height;
+    border-radius: 20px;
+    padding: 15px 30px;
+    background-color: variables.$accent-color;
+    font-size: 2rem;
+  }
+}

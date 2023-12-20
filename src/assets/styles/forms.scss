@@ -1,0 +1,72 @@
+@use "./variables.scss";
+
+.form {
+  margin: 50px 30px auto 30px;
+  padding: 10px;
+
+  font-size: 1.2rem;
+
+  h1 {
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid variables.$border-color;
+    padding: 10px 20px;
+
+    align-self: auto;
+    vertical-align: middle;
+    text-indent: 0%;
+  }
+
+  button {
+    margin: 5px auto;
+    background-color: variables.$accent-color;
+    -moz-border-radius: 2px; //for mozilla support
+    -webkit-border-radius: 2px; //for chrome support
+    border-radius: 2px;
+
+    height: 45px;
+    width: 95%;
+
+    font-size: 1.2rem;
+
+    &:disabled {
+      background-color: variables.$secondary-color;
+      color: variables.$secondary-font-color;
+    }
+  }
+
+  #prompt {
+    margin-top: 10px;
+
+    font-size: 0.8rem;
+    text-align: center;
+
+    a {
+      color: variables.$accent-color;
+      text-decoration: none;
+    }
+  }
+
+  #input-box {
+    margin: 10px 0;
+  
+    p {
+      color: variables.$secondary-font-color;
+      text-align: left;
+    }
+  
+    input {
+      margin-top: 3px;
+      background-color: variables.$secondary-accent-color;
+      padding: 5px 10px;
+      -moz-border-radius: 3px; //for mozilla support
+      -webkit-border-radius: 3px; //for chrome support
+      border-radius: 3px;
+      border: 2px solid variables.$border-color;
+      height: 35px;
+      font-size: 1.2rem;
+      color: black;
+    }
+  }
+}
+

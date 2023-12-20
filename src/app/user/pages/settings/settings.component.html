@@ -1,0 +1,6 @@
+<div class="flex-column" id="settings-container">
+  <button [routerLink]="['/dashboard/subscriptions']" routerLinkActive="true">Subscription</button>
+  <button [routerLink]="['/dashboard/history']">Conversions</button>
+  <button *ngIf="isAdmin()" [routerLink]="['/admin']" routerLinkActive="true">Admin Panel</button>
+  <button (click)="logOut()">Log out</button>
+</div>

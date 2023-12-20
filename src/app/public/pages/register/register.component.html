@@ -1,1 +1,66 @@
-<p>register works!</p>
+<form
+  #registerForm="ngForm"
+  (ngSubmit)="register()"
+  class="flex-column form"
+>
+  <h1>Register</h1>
+  <div class="flex-column" id="input-box">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder=""
+      required
+      [(ngModel)]="registerData.username"
+      #password="ngModel"
+    />
+  </div>
+  <div class="flex-column" id="input-box">
+    <label for="email">E-mail</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder=""
+      required
+      [(ngModel)]="registerData.email"
+      #password="ngModel"
+    />
+  </div>
+  <div class="flex-column" id="input-box">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder=""
+      required
+      [(ngModel)]="registerData.password"
+      #password="ngModel"
+    />
+  </div>
+  <div class="flex-column" id="input-box">
+    <label for="repeat-password">Repeat password</label>
+    <input
+      type="password"
+      name="repeat-password"
+      id="repeat-password"
+      placeholder=""
+      required
+      [(ngModel)]="repeatPassword"
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="registerForm.invalid || registerData.password != repeatPassword"
+  >
+    Register
+  </button>
+  <p class="error-message" *ngIf="registerData.password != repeatPassword">
+    Passwords must be the same.
+  </p>
+  <p id="prompt">
+    Already have an account? - <a [routerLink]="['/login']">Login</a>
+  </p>
+</form>

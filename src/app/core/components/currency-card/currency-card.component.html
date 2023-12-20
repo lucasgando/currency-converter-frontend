@@ -1,0 +1,23 @@
+<div id="currency-card">
+  <img *ngIf="currency.flag != ''" src="{{ currency.flag }}" />
+  <img *ngIf="currency.flag == ''" src="./../../../../assets/icons/placeholder-square" />
+  <div class="flex-column">
+    <h2>
+      {{ currency.name }}
+    </h2>
+    <div id="info-container">
+      <div class="flex-column">
+        <h3>Symbol</h3>
+        <p>
+          {{ currency.symbol }}
+        </p>
+      </div>
+      <div class="flex-column">
+        <h3>Exchange Index</h3>
+        <p>
+          {{ currency.conversionIndex }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

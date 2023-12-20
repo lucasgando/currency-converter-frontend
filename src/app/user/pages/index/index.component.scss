@@ -1,0 +1,99 @@
+@use './../../../../assets/styles/variables.scss';
+
+#top-bar {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: variables.$background-color;
+  border: 2px solid variables.$border-color;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  top: 0;
+}
+
+#search-bar {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  margin: 5px auto;
+  width: 95%;
+
+  input {
+    border: 2px solid variables.$border-color;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 3px 15px;
+    height: 50px;
+    color: black;
+    font-size: 1.2rem;
+  }
+
+  button {
+    display: flex;
+    margin: 0px 0px;
+    background-color: variables.$accent-color;
+    padding: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 50px;
+    aspect-ratio: 1;
+  }
+
+  img {
+    margin: auto;
+    width: 80%;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+}
+
+#scroll-up-button {
+  margin-top: 5px;
+  margin-left: auto;
+  border: 2px solid variables.$border-color;
+  border-bottom: none;
+  border-right: none;
+  border-top-left-radius: 10px;
+  background-color: variables.$accent-color;
+  color: variables.$main-font-color;
+  padding: 8px 10px;
+  right: 0px;
+  bottom: variables.$user-footer-height;
+  font-size: 1.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+currency-card {
+  margin: 0px auto;
+  margin-top: 5px;
+  width: 95%;
+  max-width: 400px;
+}
+
+#currency-card-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+
+  button {
+    margin: auto;
+    padding: 4px 0px;
+    background-color: variables.$background-color;
+    border: 2px solid variables.$border-color;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 90%;
+    max-width: 370px;
+  }
+}
+
+#favorites {
+  padding-bottom: 5px;
+  border: 2px solid variables.$border-color;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: none;
+}

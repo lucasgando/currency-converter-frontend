@@ -1,0 +1,24 @@
+@use './../../../../assets/styles/variables.scss';
+
+footer {
+  height: variables.$public-footer-height;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: variables.$background-color;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-top: 2px solid variables.$border-color;
+
+  a {
+    display: flex;
+    margin: auto;
+  }
+
+  img {
+    height: 50px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    overflow: hidden;
+    margin: auto;
+  }
+}

@@ -1,0 +1,103 @@
+<form
+  *ngIf="selecting() == 'none'"
+  #converterForm="ngForm"
+  (ngSubmit)="convert()"
+>
+  <img src="./../../../../assets/icons/company-icon.png" id="converter-icon" />
+  <h1>Converter</h1>
+  <div>
+    <label for="amount"></label>
+    <input type="number" name="amount" [(ngModel)]="amount" />
+  </div>
+  <p
+    *ngIf="fromCurrency().id == 0"
+    (click)="selectList('from')"
+    id="card-placeholder"
+  >
+    Select currency
+  </p>
+  <currency-card
+    *ngIf="fromCurrency().id != 0"
+    (click)="selectList('from')"
+    [currency]="fromCurrency()"
+  ></currency-card>
+  <p
+    *ngIf="toCurrency().id == 0"
+    (click)="selectList('to')"
+    id="card-placeholder"
+  >
+    Select currency
+  </p>
+  <currency-card
+    *ngIf="toCurrency().id != 0"
+    (click)="selectList('to')"
+    [currency]="toCurrency()"
+  ></currency-card>
+  <button
+    *ngIf="!loading()"
+    [disabled]="
+      converterForm.invalid ||
+      amount <= 0 ||
+      fromCurrency().id == 0 ||
+      toCurrency().id == 0
+    "
+    type="submit"
+  >
+    Convert
+  </button>
+  <img
+    *ngIf="loading()"
+    src="./../../../../assets/icons/svg/loading_spinner.svg"
+    alt="Loading..."
+  />
+</form>
+
+<div *ngIf="selecting() != 'none'" class="flex-column">
+  <h2 class="sticky" id="sticky-selector-title">
+    Select {{ selecting() }} currency
+  </h2>
+  <div class="flex-column" id="favorites">
+    <currency-card
+    *ngFor="let currency of favoriteCurrencies()"
+    [currency]="currency"
+    (click)="selectCurrency(selecting(), currency)"
+    ></currency-card>
+  </div>
+  <div *ngFor="let currency of currencies()" class="flex-column">
+    <currency-card
+    *ngIf="favoriteIndexes.indexOf(currency.id) == -1"
+      [currency]="currency"
+      (click)="selectCurrency(selecting(), currency)"
+    ></currency-card>
+  </div>
+  <button
+    (click)="scrollToTop()"
+    *ngIf="windowScrolled()"
+    class="sticky"
+    id="scroll-up-button"
+  >
+    Top
+  </button>
+</div>
+
+<div *ngIf="result() > 0" class="flex-column backdrop">
+  <div id="prompt-screen">
+    <h1>Result</h1>
+    <h2>{{ fromCurrency().symbol + " >>> " + toCurrency().symbol }}</h2>
+    <p id="result">{{ result() }}</p>
+    <button (click)="result.set(0)">Back</button>
+  </div>
+</div>
+
+<div *ngIf="!canConvert()" class="flex-column backdrop">
+  <div id="prompt-screen">
+    <h1>Converter error!</h1>
+    <p id="alert-text">
+      You have run out of converter uses.<br />Please upgrade your subcription
+      to convert again.
+    </p>
+    <button [routerLink]="['/subscription']" routerLinkActive="true">
+      Upgrade
+    </button>
+  </div>
+</div>

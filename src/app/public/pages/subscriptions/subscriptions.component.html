@@ -1,0 +1,24 @@
+<form
+  #subscriptionForm="ngForm"
+  class="flex-column"
+  (submit)="changeSubscription()"
+>
+  <div class="flex-column">
+    <span *ngFor="let subscription of subscriptions()">
+      <input
+        type="radio"
+        id="{{ 'sub' + subscription.id }}"
+        name="subscriptionForm"
+        value="{{ subscription.id }}"
+        [(ngModel)]="selectedSubscriptionId"
+      />
+      <label for="{{ 'sub' + subscription.id }}">
+        <subscription-card [subscription]="subscription"></subscription-card>
+      </label>
+    </span>
+  </div>
+
+  <button type="submit" class="sticky">
+    CONFIRM
+  </button>
+</form>

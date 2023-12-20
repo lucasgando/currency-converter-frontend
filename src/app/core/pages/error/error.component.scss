@@ -1,0 +1,26 @@
+@use './../../../../assets/styles/variables.scss';
+
+#error {
+  background-color: variables.$background-color;
+  height: 100vh;
+
+  div {
+    margin: 150px auto;
+    text-align: center;
+
+    h1 {
+      font-size: 10rem;
+    }
+    p {
+      margin: 20px auto;
+      font-size: 2rem;
+    }
+    button {
+      margin: auto;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background-color: variables.$accent-color;
+      font-size: 2rem;
+    }
+  }
+}

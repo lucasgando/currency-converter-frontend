@@ -1,0 +1,33 @@
+<div id="conversion-card">
+  <div id="title">
+    <h2>
+      {{
+        conversion.fromCurrency.symbol + ">>>" + conversion.toCurrency.symbol
+      }}
+    </h2>
+    <div id="original-indexes">
+      <span>
+        <h3>{{ conversion.fromCurrency.symbol }} Index</h3>
+        <p>{{ conversion.fromCurrencyIndex }}</p>
+      </span>
+      <span>
+        <h3>{{ conversion.toCurrency.symbol }} Index</h3>
+        <p>{{ conversion.toCurrencyIndex }}</p>
+      </span>
+    </div>
+  </div>
+
+  <span id="original-amount">
+    <h3>{{ conversion.fromCurrency.symbol }}</h3>
+    <p>
+      {{ conversion.amount }}
+    </p>
+  </span>
+  <span id="result">
+    <h3>{{ conversion.toCurrency.symbol }}</h3>
+    <p>
+      {{ conversion.result }}
+    </p>
+  </span>
+  <p id="date">Date: {{conversion.date}}</p>
+</div>

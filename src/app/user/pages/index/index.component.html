@@ -1,0 +1,75 @@
+<div class="flex-column sticky" id="top-bar">
+  <div id="search-bar">
+    <input
+      type="search"
+      name="searchbar"
+      id="searchbar"
+      placeholder="Search"
+      [(ngModel)]="searchValue"
+      (ngModelChange)="filter()"
+    />
+    <button type="button" (click)="filter()">
+      <img src="./../../../../assets/icons/search-button-icon.png" />
+    </button>
+  </div>
+</div>
+
+<div class="flex-column">
+  <div id="favorites">
+    <div *ngFor="let currency of favoriteCurrencies()">
+      <span class="flex-column" id="currency-card-container">
+        <currency-card
+          [currency]="currency"
+          (click)="toggleDropdown(currency.id)"
+        ></currency-card>
+        <div
+          *ngIf="openDropdown() == currency.id"
+          class="flex-column"
+          id="dropdown-menu"
+        >
+          <button [routerLink]="['/dashboard/converter/from/' + currency.id]">
+            Convert from this currency
+          </button>
+          <button [routerLink]="['/dashboard/converter/to/' + currency.id]">
+            Convert to this currency
+          </button>
+          <button (click)="removeFavorite(currency.id)">Unfavorite</button>
+        </div>
+      </span>
+    </div>
+  </div>
+  <div *ngFor="let currency of currencies()">
+    <span
+      *ngIf="favoriteIndexes().indexOf(currency.id) == -1"
+      class="flex-column"
+      id="currency-card-container"
+    >
+      <currency-card
+        [currency]="currency"
+        (click)="toggleDropdown(currency.id)"
+      ></currency-card>
+      <div
+        *ngIf="openDropdown() == currency.id"
+        class="flex-column"
+        id="dropdown-menu"
+      >
+        <button [routerLink]="['/dashboard/converter/from/' + currency.id]">
+          Convert from this currency
+        </button>
+        <button [routerLink]="['/dashboard/converter/to/' + currency.id]">
+          Convert to this currency
+        </button>
+        <button (click)="addFavorite(currency.id)">Favorite</button>
+      </div>
+    </span>
+  </div>
+
+  <button
+    (click)="scrollToTop()"
+    *ngIf="windowScrolled()"
+    class="sticky"
+    id="scroll-up-button"
+  >
+    Top
+  </button>
+</div>

@@ -1,0 +1,80 @@
+@use "./../../../../assets/styles/variables.scss";
+#conversion-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 2px solid variables.$border-color;
+  border-radius: 20px;
+  padding: 10px;
+  width: inherit;
+
+  * {
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  #title {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    h2 {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: variables.$secondary-accent-color;
+      color: black;
+      margin: auto;
+      font-size: 1.5rem;
+    }
+
+    #original-indexes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 2px auto;
+      border-bottom: 2px solid variables.$border-color;
+      width: 100;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 100%;
+
+        h3, p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #original-amount {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5px 0px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #result {
+    margin: 5px auto;
+    border-radius: 20px;
+    background-color: variables.$accent-color;
+    width: 95%;
+    text-align: center;
+    padding: 5px;
+
+    h3 {
+      font-size: 0.8rem;
+      color: variables.$secondary-color;
+    }
+
+    p {
+      font-size: 2.5rem;
+    }
+  }
+
+  #date {
+    color: variables.$secondary-color;
+    text-align: center;
+    font-size: 0.6rem;
+  }
+}

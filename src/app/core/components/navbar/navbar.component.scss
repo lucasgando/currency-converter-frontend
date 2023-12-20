@@ -1,0 +1,22 @@
+@use './../../../../assets/styles/variables.scss';
+
+.navbar {
+  display: grid;
+  margin: 0px auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-top: 1px solid variables.$border-color;
+
+  background-color: variables.$background-color;
+  height: variables.$user-footer-height;
+  a {
+    display: flex;
+    margin: auto;
+    height: variables.$user-footer-height;
+    img {
+      margin: auto;
+      max-height: 60%;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+  }
+}

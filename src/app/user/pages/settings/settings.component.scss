@@ -1,0 +1,12 @@
+@use './../../../../assets/styles/variables.scss';
+
+#settings-container {
+  margin: 50px auto;
+  button {
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 15px 30px;
+    background-color: variables.$accent-color;
+    font-size: 1.5rem;
+  }
+}

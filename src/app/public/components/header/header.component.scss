@@ -1,0 +1,23 @@
+@use './../../../../assets/styles/variables.scss';
+
+header {
+  display: flex;
+  background-color: variables.$background-color;
+  height: variables.$public-header-height;
+}
+
+#icon {
+  max-height: 80px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  overflow: hidden;
+  margin: 5px;
+}
+
+#company-name {
+  margin: auto;
+  align-self: auto;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.3rem;
+}

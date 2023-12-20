@@ -1,0 +1,21 @@
+<div class="flex-column" id="subscription-card">
+  <h2>
+    {{ subscription.name }}
+  </h2>
+  <div>
+    <img *ngIf="subscription.subscriptionPicture != ''" src="{{ subscription.subscriptionPicture }}" />
+    <img *ngIf="subscription.subscriptionPicture == ''" src="./../../../../assets/icons/placeholder-square" />
+
+    <div id="info-column">
+      <h3>Conversion limit</h3>
+      <p>
+        {{ subscription.converterLimit == -1 ? 'UNLIMITED' : subscription.converterLimit }}
+      </p>
+
+      <div id="price-tag">
+        <p>{{ subscription.usdPrice == 0 ? 'FREE' : '$' + subscription.usdPrice }}</p>
+        <h3 *ngIf="subscription.usdPrice != 0">Price in USD</h3>
+      </div>
+    </div>
+  </div>
+</div>

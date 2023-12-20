@@ -1,0 +1,153 @@
+@use './../../../../assets/styles/variables.scss';
+
+form {
+  * {
+    margin: 10px auto;
+    color: variables.$main-font-color;
+  }
+
+  display: grid;
+
+  input {
+    border: 2px solid variables.$border-color;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  p {
+    border: 2px solid variables.$border-color;
+    border-radius: 10px;
+    padding: 35px 0px;
+    background-color: variables.$accent-color;
+    width: 95%;
+
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 50px;
+    aspect-ratio: 1;
+  }
+
+  button {
+    border: none;
+    border-radius: 10px;
+    background-color: variables.$accent-color;
+    padding: 10px 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 25%;
+    }
+  }
+}
+
+currency-card {
+  margin: 3px auto;
+  width: 95%;
+}
+
+#sticky-selector-title {
+  margin: auto;
+  padding: 10px 0px;
+  background-color: variables.$accent-color;
+  top: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0px;
+  background-color: rgba(0, 1, 1, 0.25);
+  height: 100vh;
+  width: 100vw;
+}
+
+#prompt-screen {
+  display: grid;
+  grid-template-rows: 1fr 1fr 4fr 1fr;
+  margin: auto;
+  border-radius: 20px;
+  background-color: variables.$accent-color;
+  padding: 10px;
+  height: 250px;
+  width: 300px;
+  color: variables.$main-font-color;
+  
+  * {
+    margin: auto;
+  }
+
+  h1 {
+    padding: 10px;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  #result {
+    font-size: 4rem;
+  }
+
+  #alert-text {
+    font-size: 1.3rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  button {
+    border-radius: 5px;
+    color: black;
+    background-color: variables.$secondary-accent-color;
+    font-size: 1.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#favorites {
+  padding-bottom: 5px;
+  border: 2px solid variables.$accent-color;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: none;
+}
+
+#scroll-up-button {
+  margin-top: 5px;
+  margin-left: auto;
+  border: 2px solid variables.$border-color;
+  border-bottom: none;
+  border-right: none;
+  border-top-left-radius: 10px;
+  background-color: variables.$accent-color;
+  color: variables.$main-font-color;
+  padding: 8px 10px;
+  right: 0px;
+  bottom: variables.$user-footer-height;
+  font-size: 1.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

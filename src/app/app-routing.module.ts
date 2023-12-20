@@ -1,28 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { adminGuard } from './core/guards/admin.guard';
 import { userGuard } from './core/guards/user.guard';
 import { publicGuard } from './core/guards/public.guard';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    canActivateChild: [userGuard],
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: '',
     canActivateChild: [publicGuard],
     loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
   },
   {
-    path: "dashboard",
-    canActivateChild: [userGuard, adminGuard],
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    path: 'error',
+    loadChildren: () => import('./core/pages/error/error.module').then(m => m.ErrorModule)
   },
   {
-    path: "admin",
-    canActivateChild: [adminGuard],
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  },
-  {
-    path: "",
-    redirectTo: "home",
+    path: '**',
+    redirectTo: 'error',
     pathMatch: 'full'
   }
 ];
